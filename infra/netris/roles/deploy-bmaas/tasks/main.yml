@@ -71,7 +71,7 @@
       fi
       osac --tenant "$TENANT" create baremetalinstance --name "$BMI_NAME" \
         --catalog-item "$CATALOG" --disk-image "$DISK_NAME" \
-        --set disk_image.shared=true \
+        --set disk_image.tenant=shared \
         --ssh-key "$SSH_KEY_NAME" --instance-type "$TYPE_NAME" --run-strategy always
       echo created
     fi

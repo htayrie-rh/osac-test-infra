@@ -158,10 +158,10 @@
     --pull-secret {{ _caas_pull_secret_name | quote }}
     --ssh-key {{ (caas_cluster_name ~ '-ssh-key') | quote }}
     --name {{ caas_cluster_name | quote }}
-    --set version.shared=true
+    --set version.tenant=shared
     --set {{ ('node_sets.workers.size=' ~ (caas_worker_count | int | string)) | quote }}
     --set {{ ('node_sets.workers.baremetal_instance_type.name=' ~ caas_baremetal_instance_type) | quote }}
-    --set node_sets.workers.baremetal_instance_type.shared=true
+    --set node_sets.workers.baremetal_instance_type.tenant=shared
   register: _cluster_create
   changed_when: true
   when: _cluster_exists.stdout | default('') != 'exists'
